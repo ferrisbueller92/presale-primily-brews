@@ -1,0 +1,49 @@
+/* Primily Brews Cafe — design tokens. Moody, refined specialty-coffee energy.
+   Grounded: "one of the best coffees in Sydney", iced coconut long black, cold brew, latte art,
+   pesto scramble, banana bread, buttery croissant; off-the-main-street hidden gem; DOG-FRIENDLY;
+   Neutral Bay, Ben Boyd Rd — no logo, no website.
+   DISTINCT from prior cafes (Rolland = bright warm cream + terracotta + Schibsted Grotesk, busy/grid;
+   Paradise = bright joyful green/coral/sunshine; Ellie = sage cottage + Fraunces):
+   Primily = MOODY specialty coffee — espresso-dark-led + warm cream + caramel crema + a sage pet/plant
+   accent, elegant SPECTRAL serif + DM Sans, CENTERED hero, restrained editorial footer. */
+:root{
+  /* palette — moody specialty coffee */
+  --espresso: #221710;   /* near-black coffee — dark sections / hero */
+  --espresso-2:#2F2218;
+  --cream:    #F4EBDB;   /* warm cream ground */
+  --paper:    #FBF5EA;
+  --oat:      #EBDFCB;   /* pale toasted surface */
+  --caramel:  #C2884A;   /* crema gold — signature accent */
+  --caramel-deep:#A66E33;
+  --sage:     #586B4C;   /* cosy plant / dog-friendly green — micro accent */
+  --ink:      #2A2017;   /* warm coffee-brown text */
+  --ink-soft: #786757;
+  --line:     rgba(42,32,23,.16);
+  --line-soft:rgba(42,32,23,.08);
+  --line-light:rgba(244,235,219,.18);
+
+  /* type */
+  --f-display:"Spectral","Georgia",serif;          /* elegant, literary, warm specialty serif */
+  --f-body:   "DM Sans","Helvetica Neue",Arial,sans-serif;  /* clean, calm, modern body */
+  --t-hero: clamp(2.7rem, 6.6vw, 5.6rem);
+  --t-h2:   clamp(1.9rem, 4.2vw, 3.3rem);
+  --t-h3:   clamp(1.2rem, 1.85vw, 1.55rem);
+  --t-body: 1.07rem;
+  --t-kicker:.74rem;
+
+  /* spacing */
+  --s-2:.5rem; --s-3:.85rem; --s-4:1.4rem; --s-5:2.2rem; --s-6:3.4rem; --s-7:clamp(4rem,9vw,7.5rem);
+  --maxw:1140px;
+
+  /* radii — soft, refined */
+  --r-sm:8px; --r-md:14px; --r-lg:20px; --r-pill:999px;
+
+  /* shadows — warm, soft */
+  --shadow-soft: 0 26px 60px -30px rgba(34,23,16,.5);
+  --shadow-card: 0 16px 36px -20px rgba(34,23,16,.34);
+
+  /* motion */
+  --dur:.55s;
+  --ease: cubic-bezier(.22,1,.36,1);
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}

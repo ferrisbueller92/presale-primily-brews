@@ -1,0 +1,211 @@
+/* Primily Brews Cafe — moody refined specialty-coffee. CENTERED hero + restrained footer
+   (deliberately breaking the bottom-left hero / mega-footer formula).
+   Last updated: 2026-06-29 18:55 AEST */
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--f-body);
+  font-size:var(--t-body);
+  line-height:1.62;
+  color:var(--ink);
+  background:var(--cream);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.2rem,4vw,2.4rem)}
+
+/* ---------- type ---------- */
+.kicker{
+  display:inline-block;font-family:var(--f-body);font-weight:600;
+  font-size:var(--t-kicker);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--caramel-deep);margin-bottom:var(--s-3);
+}
+.kicker.light{color:var(--caramel)}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;line-height:1.1;letter-spacing:-.01em}
+h1{font-weight:700}
+h2{font-size:var(--t-h2)}
+h3{font-size:var(--t-h3);font-weight:600}
+.hl{font-style:italic;color:var(--caramel)}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+  font-family:var(--f-body);font-weight:600;font-size:.95rem;
+  padding:.85em 1.6em;border-radius:var(--r-pill);
+  cursor:pointer;border:1.5px solid transparent;
+  transition:transform var(--dur) var(--ease),background var(--dur) var(--ease),color var(--dur) var(--ease),box-shadow var(--dur) var(--ease);
+}
+.btn-primary{background:var(--caramel);color:#2a1a0a;box-shadow:0 10px 24px -12px rgba(166,110,51,.6)}
+.btn-primary:hover{background:var(--caramel-deep);color:#fff;transform:translateY(-2px)}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.5);backdrop-filter:blur(4px)}
+.btn-ghost:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+.btn-ghost-dark{background:transparent;color:var(--espresso);border-color:var(--espresso)}
+.btn-ghost-dark:hover{background:var(--espresso);color:var(--cream);transform:translateY(-2px)}
+.btn-pill{background:var(--caramel);color:#2a1a0a;padding:.6em 1.15em;font-size:.9rem}
+.btn-pill:hover{background:var(--caramel-deep);color:#fff;transform:translateY(-2px)}
+.btn.big{padding:1.02em 1.8em;font-size:1.02rem}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;align-items:center;gap:var(--s-4);
+  padding:1rem clamp(1.2rem,4vw,2.4rem);
+  transition:background var(--dur) var(--ease),box-shadow var(--dur) var(--ease),padding var(--dur) var(--ease);
+}
+.nav.scrolled{background:rgba(251,245,234,.95);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:.6rem clamp(1.2rem,4vw,2.4rem)}
+.wordmark{font-family:var(--f-display);font-weight:700;font-size:1.45rem;letter-spacing:-.01em;color:#fff;transition:color var(--dur) var(--ease)}
+.wordmark .amp{font-style:italic;font-weight:500;color:var(--caramel)}
+.nav.scrolled .wordmark{color:var(--espresso)}
+.loc-pill{
+  margin-right:auto;font-weight:600;font-size:.76rem;letter-spacing:.04em;
+  color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);
+  padding:.34em .8em;border-radius:var(--r-pill);backdrop-filter:blur(4px);
+  transition:color var(--dur) var(--ease),background var(--dur) var(--ease),border-color var(--dur) var(--ease);
+}
+.nav.scrolled .loc-pill{color:var(--sage);background:rgba(88,107,76,.1);border-color:rgba(88,107,76,.24)}
+.nav-links{display:flex;align-items:center;gap:var(--s-4)}
+.nav-links a:not(.btn){font-weight:500;font-size:.95rem;color:#fff;opacity:.92;transition:color var(--dur),opacity var(--dur)}
+.nav-links a:not(.btn):hover{opacity:1}
+.nav.scrolled .nav-links a:not(.btn){color:var(--ink)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.nav-toggle span{width:26px;height:2.5px;background:#fff;border-radius:2px;transition:background var(--dur)}
+.nav.scrolled .nav-toggle span{background:var(--espresso)}
+.nav-drawer{position:absolute;top:100%;left:0;right:0;background:var(--espresso);display:none;flex-direction:column;gap:.2rem;padding:1rem 1.4rem 1.6rem}
+.nav-drawer.open{display:flex}
+.nav-drawer a:not(.btn){color:#fff;font-weight:500;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.nav-drawer .btn{margin-top:.8rem}
+
+/* ---------- HERO · CENTERED ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-media{position:absolute;inset:0;z-index:0}
+.hero-media video{width:100%;height:100%;object-fit:cover}
+.hero-media::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,rgba(34,23,16,.34) 0%,rgba(34,23,16,.52) 60%,rgba(34,23,16,.78) 100%);
+}
+.hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:6rem clamp(1.4rem,5vw,2rem) 0;color:#fff}
+.hero .kicker{color:#F6DEB0;text-shadow:0 1px 18px rgba(18,11,6,.9),0 0 3px rgba(0,0,0,.5)}
+.hero h1{font-size:var(--t-hero);font-weight:700;color:#fff;text-shadow:0 2px 36px rgba(34,23,16,.6)}
+.hero .sub{margin:var(--s-4) auto 0;max-width:34em;font-size:1.12rem;color:rgba(255,255,255,.92);text-shadow:0 1px 16px rgba(34,23,16,.6)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:var(--s-5);justify-content:center}
+.rating-row{margin-top:var(--s-5);font-weight:500;font-size:.98rem;color:#fff;letter-spacing:.02em}
+.rating-row b{color:var(--caramel);font-family:var(--f-display);font-weight:700}
+.scroll-cue{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.8);font-size:1.4rem;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+/* ---------- generic section ---------- */
+.sec{padding:var(--s-7) 0}
+.sec-head{max-width:680px;margin-bottom:var(--s-6)}
+.sec-head h2{margin-bottom:var(--s-3)}
+.sec-head p{color:var(--ink-soft);font-size:1.08rem}
+.sec-head.light .kicker{color:var(--caramel)}
+.sec-head.light h2{color:var(--cream)}
+
+/* ---------- THE BREW · espresso dark ---------- */
+.brew{background:var(--espresso);color:var(--cream)}
+.brew-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.brew-copy h2{color:var(--cream);margin-bottom:var(--s-4)}
+.brew-copy p{color:rgba(244,235,219,.78);font-size:1.08rem;max-width:32em;margin-bottom:var(--s-5)}
+.brew-list{list-style:none;display:flex;flex-direction:column;gap:1.1rem}
+.brew-list li{padding-left:1.4rem;position:relative}
+.brew-list li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--caramel)}
+.brew-list b{display:block;font-family:var(--f-display);font-weight:600;font-size:1.16rem;color:var(--cream)}
+.brew-list span{color:rgba(244,235,219,.66);font-size:.96rem}
+.brew-img{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-soft)}
+.brew-img img{width:100%;aspect-ratio:4/3.4;object-fit:cover}
+
+/* ---------- MENU · editorial food grid ---------- */
+.menu{background:var(--cream)}
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2.4vw,1.7rem)}
+.menu-grid figure{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-card);background:var(--paper)}
+.menu-grid img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/2;transition:transform .8s var(--ease)}
+.menu-grid figure:hover img{transform:scale(1.04)}
+.menu-grid .m-tall{grid-row:span 2}
+.menu-grid .m-tall img{aspect-ratio:4/5;height:100%}
+.menu-grid .m-wide{grid-column:span 2}
+.menu-grid .m-wide img{aspect-ratio:2.5/1}
+.menu-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.5rem 1.4rem 1.2rem;color:#fff;
+  background:linear-gradient(180deg,transparent,rgba(34,23,16,.84))}
+.menu-grid h3{color:#fff;margin-bottom:.2rem}
+.menu-grid figcaption p{color:rgba(255,255,255,.85);font-size:.95rem;line-height:1.45}
+
+/* ---------- HIDEAWAY ---------- */
+.hideaway{background:var(--oat)}
+.hide-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.hide-img{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-soft)}
+.hide-img img{width:100%;aspect-ratio:5/4;object-fit:cover}
+.hide-copy h2{margin-bottom:var(--s-4)}
+.hide-copy p{color:var(--ink-soft);font-size:1.08rem;max-width:32em;margin-bottom:var(--s-3)}
+.hide-copy .paw{display:block;margin-top:var(--s-4);padding:.9rem 1.1rem;background:rgba(88,107,76,.1);border:1px solid rgba(88,107,76,.24);border-radius:var(--r-md);color:var(--sage);font-size:1rem}
+.hide-copy .paw b{color:var(--sage)}
+
+/* ---------- PROOF · espresso dark ---------- */
+.proof{background:var(--espresso-2);color:var(--cream)}
+.big-quote{max-width:840px;margin-bottom:var(--s-6)}
+.big-quote blockquote{font-family:var(--f-display);font-weight:500;font-style:italic;font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.34;color:var(--cream)}
+.big-quote figcaption{margin-top:var(--s-4);font-weight:600;color:var(--caramel);letter-spacing:.02em;font-size:.9rem}
+.mini-revs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.1rem,2.4vw,1.8rem)}
+.mini-rev{background:rgba(255,255,255,.06);border:1px solid rgba(244,235,219,.12);border-radius:var(--r-md);padding:1.5rem 1.5rem}
+.mini-rev p{font-size:1rem;line-height:1.55;color:rgba(244,235,219,.9)}
+.mini-rev .who{margin-top:var(--s-3);font-weight:600;font-size:.84rem;color:var(--caramel)}
+
+/* ---------- VISIT ---------- */
+.visit{background:var(--cream)}
+.visit-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.visit-copy h2{margin-bottom:var(--s-3)}
+.visit-copy p{color:var(--ink-soft);font-size:1.08rem;max-width:30em}
+.visit-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:var(--s-5)}
+.visit-info{background:var(--paper);border:1px solid var(--line-soft);border-radius:var(--r-lg);box-shadow:var(--shadow-card);padding:clamp(1.6rem,3vw,2.4rem);display:flex;flex-direction:column;gap:1.3rem}
+.vi{display:flex;flex-direction:column;gap:.15rem}
+.vi .l{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--caramel-deep)}
+.vi a,.vi b{font-size:1.05rem;color:var(--ink);font-weight:500}
+.vi a:hover{color:var(--caramel-deep)}
+.vi.big-hours b{font-family:var(--f-display);font-size:1.3rem;color:var(--espresso)}
+.vi.big-hours span{color:var(--ink-soft);font-size:.96rem}
+
+/* ---------- FOOTER · restrained editorial (NOT a mega wordmark) ---------- */
+footer{background:var(--espresso);color:var(--cream);padding:clamp(2.4rem,4vw,3.2rem) 0}
+.foot-inner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.4rem}
+.foot-brand{display:flex;flex-direction:column;gap:.2rem}
+.foot-mark{font-family:var(--f-display);font-weight:600;font-size:1.6rem;color:var(--cream);letter-spacing:-.01em}
+.foot-tag{font-size:.9rem;color:rgba(244,235,219,.6)}
+.foot-meta{display:flex;flex-wrap:wrap;align-items:center;gap:1.2rem;font-size:.92rem;color:rgba(244,235,219,.78)}
+.foot-meta a:hover{color:var(--caramel)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}
+.reveal.d2{transition-delay:.2s}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.scroll-cue{animation:none}html{scroll-behavior:auto}}
+
+/* ---------- responsive ---------- */
+@media (max-width:880px){
+  .nav-links{display:none}
+  .nav-toggle{display:flex}
+  .loc-pill{display:none}
+  .brew-wrap{grid-template-columns:1fr;gap:2rem}
+  .brew-img{order:-1}
+  .menu-grid{grid-template-columns:1fr}
+  .menu-grid .m-tall{grid-row:auto}
+  .menu-grid .m-tall img,.menu-grid img{aspect-ratio:3/2}
+  .hide-wrap{grid-template-columns:1fr;gap:1.8rem}
+  .hide-img{order:-1}
+  .mini-revs{grid-template-columns:1fr}
+  .visit-wrap{grid-template-columns:1fr}
+  .foot-inner{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:520px){
+  .hero h1{font-size:clamp(2.4rem,9vw,3.2rem)}
+}
+
+/* Hide Safari/iOS play-button overlay shown when autoplay is blocked — hero shows a clean
+   poster frame; the muted video starts on autoplay (where allowed) or first scroll/tap. */
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-overlay-play-button,
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-panel,
+video::-webkit-media-controls{display:none!important;-webkit-appearance:none}
